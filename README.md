@@ -171,11 +171,11 @@ ros2_brake_decider/
 
 | Path | Description |
 |------|-------------|
-| [src/brake_decider_node.cpp](src/brake_decider_node.cpp) | The node (params, subs, timer, publisher) |
-| [launch/brake_decider.launch.py](launch/brake_decider.launch.py) | Loads YAML + runs node |
-| [config/brake_params.yaml](config/brake_params.yaml) | Default parameters |
-| [CMakeLists.txt](CMakeLists.txt) | Build config |
-| [package.xml](package.xml) | Package manifest |
+| [src/brake_decider_node.cpp](ros2_brake_decider/src/brake_decider_node.cpp) | The node (params, subs, timer, publisher) |
+| [launch/brake_decider.launch.py](ros2_brake_decider/launch/brake_decider.launch.py) | Loads YAML + runs node |
+| [config/brake_params.yaml](ros2_brake_decider/config/brake_params.yaml) | Default parameters |
+| [CMakeLists.txt](ros2_brake_decider/CMakeLists.txt) | Build config |
+| [package.xml](ros2_brake_decider/package.xml) | Package manifest |
 
 ---
 
@@ -242,7 +242,7 @@ The math is trivial (a few doubles per tick). The node runs comfortably at much 
 - Stage 3: integrate with a 1D longitudinal simulation to compare decisions vs. actual stopping distance under dynamics
 
 ## License
-MIT: See License
+MIT: See [License](LICENSE)
 
 ## Credits
 This node re-implements the stopping-distance logic from the companion C++ library braking_decision_lib I made (insert link), adapted for ROS 2 with live parameters and pub/sub wiring.

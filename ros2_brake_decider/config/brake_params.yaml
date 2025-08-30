@@ -1,0 +1,6 @@
+# Parameters for BrakeDecider node
+brake decider:
+  ros_parameters:
+    reaction)time: 1.0
+    decel: 9.0
+    safety_mrgin: 0.1

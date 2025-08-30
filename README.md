@@ -1,36 +1,37 @@
 # ROS2_Brake_Decider
 
-A ROS 2 C++ node that decides whether to issue a brake command based on ego speed and obstacle distance, with tunable parameters (reaction_time, decel, and safety_margin). 
+![ROS 2](https://img.shields.io/badge/ROS2-Humble-blue?logo=ros&logoColor=white)
+![C++](https://img.shields.io/badge/C++-17-informational?logo=cplusplus&logoColor=white)
+![Build](https://img.shields.io/badge/Build-colcon-success?logo=cmake&logoColor=white)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04-E95420?logo=ubuntu&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
-Implements the classic stopping-distance model:
+A minimal ROS 2 C++ node that makes braking decisions in real time, based on **ego speed** and **obstacle distance**.  
 
-`d_stop = v * t_react + v² / (2a)`
-
-…and compares it to available distance with a safety margin:
-
-`d_avail = d * (1 - safety_margin)`
-
-Publishes `std_msgs/Bool` on `/brake_cmd` at 20 Hz.
+This is a small ADAS-style decision module: it listens to `/ego_speed` and `/obstacle_distance`, applies a classic stopping-distance model, and publishes a Boolean brake command on `/brake_cmd`. All key parameters (`reaction_time`, `decel`, `safety_margin`) are live-tunable at runtime, so behavior can be adjusted without rebuilding.  
 
 ---
-
-## Why this exists
-
-Small, focused node to demonstrate an ADAS-style decision in ROS 2:
-- Clear separation of concerns: **sensors → decision → actuation**.
-- Parameters are tunable at runtime (no rebuild).
-- Tiny enough to read in one sitting, useful as a building block in larger stacks.
-
----
-
 
 ## Project Context
 
-This node is Stage 2 of my [ADAS Learning Sprint](https://github.com/IvanMcCauley/Adas_Learning_Sprint):
+This repo is **Stage 2** of a project during my [ADAS Learning Sprint](https://github.com/IvanMcCauley/Adas_Learning_Sprint):
 
-1. **[Braking decision library (C++17)](https://github.com/IvanMcCauley/braking_decision_lib)** - standalone math & unit tests  
+1. **[Braking decision library (C++17)](https://github.com/IvanMcCauley/braking_decision_lib)** - standalone math + unit tests  
 2. **ROS 2 integration (this repo)** - parameterized node with pub/sub  
-3. **1D longitudinal simulation** - test decisions against vehicle dynamics
+3. **1D longitudinal simulation** - validate decisions against vehicle dynamics  
+
+---
+
+## Stopping-distance logic
+
+The node implements the standard model:
+
+`d_stop = v * t_react + v² / (2a)`
+
+`d_avail = d * (1 - safety_margin)`
+
+
+If `d_stop >= d_avail`, the node commands a brake. Otherwise it publishes `false`.
 
 
 ---

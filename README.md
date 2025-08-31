@@ -63,7 +63,7 @@ If `d_stop >= d_avail`, the node commands a brake. Otherwise it publishes `false
 ```bash
 # inside your colcon workspace
 cd ~/ros2_ws/src
-git clone https://github.com/<you>/ros2_brake_decider.git
+git clone https://github.com/IvanMcCauley/ROS2_Brake_Decider.git
 cd ..
 colcon build --packages-select ros2_brake_decider
 source install/setup.bash
@@ -154,7 +154,7 @@ tick_timer_ = this->create_wall_timer(
 
 ```
 ---
-## Minimal code layout
+## Code layout
 ```
 ros2_brake_decider/
 ├─ include/               # (reserved, minimal public API today)
@@ -246,4 +246,4 @@ The math is trivial (a few doubles per tick). The node runs comfortably at much 
 MIT: See [License](LICENSE)
 
 ## Credits
-This node re-implements the stopping-distance logic from the companion C++ library braking_decision_lib I made (insert link), adapted for ROS 2 with live parameters and pub/sub wiring.
+This node re-implements the stopping-distance logic from the companion C++ library [braking decision library](https://github.com/IvanMcCauley/braking_decision_lib) I made, adapted for ROS 2 with live parameters and pub/sub wiring.

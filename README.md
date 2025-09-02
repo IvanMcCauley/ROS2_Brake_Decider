@@ -18,7 +18,7 @@ This repo is **Stage 2** of a project during my [ADAS Learning Sprint](https://g
 
 1. **[Braking decision library (C++17)](https://github.com/IvanMcCauley/braking_decision_lib)** - standalone math + unit tests  
 2. **ROS 2 integration (this repo)** - parameterized node with pub/sub  
-3. **[1D longitudinal simulation](https://github.com/IvanMcCauley/ros2_brake_validation_sim)** - validate decisions against vehicle dynamics  
+3. **[1D longitudinal simulation](https://github.com/IvanMcCauley/ros2_brake_validation_sim)** - validate decisions in a simulation
 
 ---
 
